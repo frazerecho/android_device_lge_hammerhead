@@ -37,7 +37,9 @@ PRODUCT_COPY_FILES += \
     device/lge/hammerhead/fstab.hammerhead:$(TARGET_COPY_OUT_ROOT)/fstab.hammerhead \
     device/lge/hammerhead/fstab.hammerhead:$(TARGET_COPY_OUT_RAMDISK)/fstab.hammerhead \
     device/lge/hammerhead/fstab.hammerhead:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.hammerhead \
-    device/lge/hammerhead/ueventd.hammerhead.rc:root/ueventd.hammerhead.rc
+    device/lge/hammerhead/ueventd.hammerhead.rc:$(TARGET_COPY_OUT_ROOT)/ueventd.hammerhead.rc \
+    device/lge/hammerhead/ueventd.hammerhead.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.hammerhead.rc \
+    device/lge/hammerhead/ueventd.hammerhead.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.hammerhead.rc
 
 # Input device files for hammerhead
 PRODUCT_COPY_FILES += \
