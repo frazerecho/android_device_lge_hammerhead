@@ -157,4 +157,7 @@ TARGET_USES_INTERACTION_BOOST := true
 # Legacy memfd
 TARGET_HAS_MEMFD_BACKPORT := true
 
+#
+MALLOC_SVELTE_FOR_LIBC32 := true
+
 -include vendor/lge/hammerhead/BoardConfigVendor.mk
