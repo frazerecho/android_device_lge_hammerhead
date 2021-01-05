@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2012-2019, The Linux Foundation. All rights reserved.
- * Copyright (C) 2017-2019 The LineageOS Project
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -47,7 +46,6 @@
 #include "hint-data.h"
 #include "performance.h"
 #include "power-common.h"
-#include "power-feature.h"
 #include "utils.h"
 
 static struct hint_handles handles[NUM_HINTS];
@@ -61,7 +59,7 @@ void power_init() {
     }
 }
 
-int __attribute__((weak)) power_hint_override(power_hint_t UNUSED(hint), void* UNUSED(data)) {
+int __attribute__((weak)) power_hint_override(power_hint_t hint, void* data) {
     return HINT_NONE;
 }
 
@@ -94,19 +92,12 @@ void power_hint(power_hint_t hint, void* data) {
                 }
             }
             break;
-        case POWER_HINT_SET_PROFILE:
-            ALOGI("set profile power hint not handled in power_hint_override");
-            break;
         default:
             break;
     }
 }
 
-int __attribute__((weak)) get_number_of_profiles() {
-    return 0;
-}
-
-int __attribute__((weak)) set_interactive_override(int UNUSED(on)) {
+int __attribute__((weak)) set_interactive_override(int on) {
     return HINT_NONE;
 }
 
@@ -143,6 +134,3 @@ void set_interactive(int on) {
         ALOGI("Hint not handled in set_interactive_override");
     }
 }
-
-void __attribute__((weak))
-set_device_specific_feature(feature_t UNUSED(feature), int UNUSED(state)) {}
