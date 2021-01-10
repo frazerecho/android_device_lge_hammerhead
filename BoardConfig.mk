@@ -155,6 +155,10 @@ TARGET_USES_INTERACTION_BOOST := true
 TARGET_HAS_MEMFD_BACKPORT := true
 
 #
+MALLOC_SVELTE := true
 MALLOC_SVELTE_FOR_LIBC32 := true
+
+# Dedupe VNDK libraries with identical core variants.
+TARGET_VNDK_USE_CORE_VARIANT := true
 
 -include vendor/lge/hammerhead/BoardConfigVendor.mk

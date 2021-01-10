@@ -30,6 +30,27 @@ PRODUCT_COPY_FILES += \
 # HIDL
 PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
+# Always preopt extracted APKs to prevent extracting out of the APK for gms modules.
+PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+
+# Do not generate libartd.
+PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
+
+# Disable Scudo outside to save RAM.
+PRODUCT_DISABLE_SCUDO := true
+
+# Strip the local variable table and the local variable type table to reduce
+# the size of the system image. This has no bearing on stack traces, but will
+# leave less information available via JDWP.
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
+
+# Speed profile services and wifi-service to reduce RAM and storage.
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
+
+# Do not spin up a separate process for the network stack, use an in-process APK.
+PRODUCT_PACKAGES += InProcessNetworkStack
+PRODUCT_PACKAGES += com.android.tethering.inprocess
+
 PRODUCT_COPY_FILES += \
     device/lge/hammerhead/init.hammerhead.rc:root/init.hammerhead.rc \
     device/lge/hammerhead/init.hammerhead.usb.rc:root/init.hammerhead.usb.rc \
