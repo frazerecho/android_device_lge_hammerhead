@@ -6,6 +6,7 @@ unix_socket_send(system_server, sensors, sensors)
 allow system_server mpdecision:unix_stream_socket sendto;
 allow system_server mpctl_socket:dir search;
 
+allow system_server app_zygote:process getpgid;
 allow system_server proc_last_kmsg:file r_file_perms;
 
 # Read /data/tombstones/ramdump files.
@@ -18,6 +19,9 @@ allow system_server sdcardfs:file r_file_perms;
 allow system_server adb_data_file:dir r_dir_perms;
 allow system_server adb_data_file:file r_file_perms;
 
+allow system_server hal_light_default:process getpgid;
+allow system_server hal_light_default:process signal;
+
 allow system_server unlabeled:file { read getattr unlink };
 allow system_server unlabeled:lnk_file { read getattr unlink };
 
@@ -29,3 +33,8 @@ allowxperm system_server self:udp_socket ioctl { SIOCSIFFLAGS SIOCDEVPRIVATE_D }
 
 allow system_server self:socket ioctl;
 allow system_server self:socket create_socket_perms;
+
+get_prop(system_server, exported_camera_prop);
+get_prop(system_server, userspace_reboot_config_prop);
+get_prop(system_server, userspace_reboot_exported_prop);
+get_prop(system_server, vendor_security_patch_level_prop);
