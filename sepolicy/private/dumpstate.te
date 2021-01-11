@@ -1,0 +1,3 @@
+allow dumpstate adbroot_exec:file r_file_perms;
+allow dumpstate apexd_exec:file r_file_perms;
+allow dumpstate rs_exec:file r_file_perms;
